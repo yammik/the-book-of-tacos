@@ -1,0 +1,88 @@
+>> BOOK OF TACOS <<
+
+
+0. Welcome page
+    About history of tacos
+    Browse posts/recipes
+
+--------------------------------------------------
+
+- Models:
+
+  1. User
+    attributes: username, password
+
+    has_many :active_relationships
+    has_many :passive_relationships
+    has_many :posts
+    has_many :recipes, through: :posts
+    has_many :comments, through: :posts
+    has_many :ingredients, through: :recipes
+
+    view: (1) profile view
+          (2) edit profile
+          (3) display all posts
+          (4) display recipes
+          (5) create recipes
+          (6) display followers/following
+          (7) display all comments
+
+--------------------------------------------------
+
+  2. Active_relationship
+    attributes: follower, followed
+    belongs_to :user
+
+--------------------------------------------------
+
+  3. Passive_relationship
+      attributes: followed, follower
+      belongs_to :user
+
+--------------------------------------------------
+
+  4. Post
+    belongs_to :user
+    has_many :comments
+    belongs_to :recipe
+
+    view: (1) create/select and save recipe
+          (2) create comment
+          (3) display comments associated to the post
+
+--------------------------------------------------
+
+  5. Comment
+    belongs_to :post
+
+--------------------------------------------------
+
+  6. Recipe
+    has_many :posts
+    has_many :users, through: :posts
+    has_many :recipeingredients
+    has_many :ingredients, through: :recipeingredients
+
+    views: (1) show recipe
+           (2) Like/save recipe
+           (3) list ingredients
+
+--------------------------------------------------
+
+  7. RecipeIngredient
+    belongs_to :ingredient
+    belongs_to :recipe
+
+--------------------------------------------------
+
+  8. Ingredient
+    has_many :recipeingredients
+    has_many :recipes, through: :recipeingredients
+
+--------------------------------------------------
+
+  9. Restaurants
+
+    view: (1) display by location (city)
+
+--------------------------------------------------
