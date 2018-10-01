@@ -1,6 +1,3 @@
-puts "BBFIGJSDOJDSOAJ"
-
-
 Recipe.create(title: 'Black Bean Potato and Onion Tacos')
 Ingredient.create(name: 'Garlic black beans')
 Recipe.create(title: 'Thanksgiving Tacos')
@@ -142,5 +139,3 @@ Ingredient.create(name: 'Moroccan lamb')
 Recipe.create(title: 'Fish Tacos')
 Ingredient.create(name: 'Chipotle sauce')
 Ingredient.create(name: 'Baked tilapia')
-
-puts "AAAAAAAA"

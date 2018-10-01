@@ -1,0 +1,2 @@
+class PassiveRelationship < ApplicationRecord
+end

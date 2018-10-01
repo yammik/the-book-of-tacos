@@ -1,0 +1,7 @@
+<%= form_for @recipe do |f| %>
+  <p> <%= f.label "Title" %> </p>
+  <%= f.text_field :title %>
+  <p> <%= f.label "Description" %> </p>
+  <%= f.text_area :description %>
+  <%= f.submit "Submit Recipe"%>
+<% end %>
