@@ -1,16 +1,19 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:new, :create]
 
   def show
 
   end
 
   def new
+    #sign up page
     @user = User.new
   end
 
   def create
     @user = User.create(user_params)
+    sessions[:user_id] = @user.id
     redirect_to @user
   end
 
@@ -25,6 +28,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    flash[:notice] = 'You deleted your account.'
     redirect_to new_user_path
   end
 
