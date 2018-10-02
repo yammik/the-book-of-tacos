@@ -14,7 +14,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to @post
+    if post.valid?
+      redirect_to @post
+    else
+      flash[:error] = @post.errors.full_messages
+      redirect_to new_post_path
+    end
   end
 
   def edit
@@ -23,7 +28,12 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    redirect_to @post
+    if post.valid?
+      redirect_to @post
+    else
+      flash[:error] = @post.errors.full_messages
+      redirect_to edit_post_path
+    end
   end
 
   def destroy

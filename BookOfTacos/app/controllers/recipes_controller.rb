@@ -17,7 +17,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-    redirect_to @recipe
+    if recipe.valid?
+      redirect_to @recipe
+    else
+      flash[:error] = @recipe.errors.full_messages
+      redirect_to new_recipe_path
+    end
   end
 
   def edit
@@ -26,7 +31,12 @@ class RecipesController < ApplicationController
 
   def update
     @recipe.update(recipe_params)
-    redirect_to @recipe
+    if recipe.valid?
+      redirect_to @recipe
+    else
+      flash[:error] = @recipe.errors.full_messages
+      redirect_to edit_recipe_path
+    end
   end
 
   def destroy

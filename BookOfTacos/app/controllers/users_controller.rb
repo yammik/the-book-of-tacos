@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:new, :create]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:new, :create]
 
   def show
 
@@ -13,8 +13,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    sessions[:user_id] = @user.id
-    redirect_to @user
+    session[:user_id] = @user.id
+
+    if user.valid?
+      redirect_to @user
+    else
+      flash[:error] = @user.errors.full_messages
+      redirect_to new_user_path
+    end
   end
 
   def edit
@@ -23,7 +29,12 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    redirect_to @user
+    if user.valid?
+      redirect_to @user
+    else
+      flash[:error] = @user.errors.full_messages
+      redirect_to edit_user_path
+    end
   end
 
   def destroy
