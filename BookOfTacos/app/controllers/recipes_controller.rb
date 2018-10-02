@@ -17,7 +17,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-    if recipe.valid?
+    if @recipe.valid?
       redirect_to @recipe
     else
       flash[:error] = @recipe.errors.full_messages
@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe.update(recipe_params)
-    if recipe.valid?
+    if @recipe.valid?
       redirect_to @recipe
     else
       flash[:error] = @recipe.errors.full_messages

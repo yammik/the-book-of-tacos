@@ -13,9 +13,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    session[:user_id] = @user.id
 
-    if user.valid?
+    if @user.valid?
+      session[:user_id] = @user.id
       redirect_to @user
     else
       flash[:error] = @user.errors.full_messages
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     @user.update(user_params)
-    if user.valid?
+    if @user.valid?
       redirect_to @user
     else
       flash[:error] = @user.errors.full_messages

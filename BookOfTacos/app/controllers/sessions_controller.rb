@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user && @user.authenticate(params[:password]) # gives back user intstance or false
       # once we have found the user, create a new session for them
-      session[:user_id] = @user_id
+      session[:user_id] = @user.id
       redirect_to @user
     else
       flash[:notice] = 'Invalid username or password'

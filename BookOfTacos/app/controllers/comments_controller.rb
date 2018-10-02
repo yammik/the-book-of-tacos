@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    if comment.valid?
+    @post = @comment.post
+    if @comment.valid?
       redirect_to @post
     else
       flash[:error] = @comment.errors.full_messages
@@ -21,7 +22,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.update(comment_params)
     @post = @comment.post
-    if comment.valid?
+    if @comment.valid?
       redirect_to @post
     else
       flash[:error] = @comment.errors.full_messages
