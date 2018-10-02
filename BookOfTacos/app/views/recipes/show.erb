@@ -1,0 +1,17 @@
+<h1>Show page Recipe</h1>
+
+<p>Title:</p>
+<%= @recipe.title %>
+<p>Description:</p>
+<%= @recipe.description%>
+<p>Number of Likes:</p>
+<%= @recipe.like_count %>
+<p>Rating:</p>
+<%= @recipe.rating %><br><br>
+
+<p>Ingredients</p>
+<ul>
+  <% @recipe.ingredients.each do |i| %>
+    <li><%= i.name %></li>
+  <% end %>
+</ul>

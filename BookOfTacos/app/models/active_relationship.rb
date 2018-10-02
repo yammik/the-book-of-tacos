@@ -1,0 +1,3 @@
+class ActiveRelationship < ApplicationRecord
+  
+end

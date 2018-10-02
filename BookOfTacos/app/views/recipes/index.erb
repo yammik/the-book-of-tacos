@@ -1,0 +1,12 @@
+<h1>Recipes Index</h1>
+
+<%= form_tag(recipes_path, method: :get) do %>
+  <%= select_tag :search, options_for_select(@ingredients.map {|i| [i.name, i.id]}) %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<ul>
+  <% @recipes.each do |r| %>
+    <li><%= r.title %></li>
+  <% end %>
+</ul>

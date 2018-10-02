@@ -86,3 +86,18 @@
     view: (1) display by location (city)
 
 --------------------------------------------------
+
+TOOOOODOOOOOODOODODODODOODODODODODODODODODO
+
+Todo:
+            1. Homepage/welcome => random selection of tacos => recipe page for said taco
+(read, mar) 2. Login screen (landing page); sessions ; auth
+(read, may) 3. User relationships associations
+            4. User profile page => list posts / list recipes / list comments / list user_relationships
+(nicky)     5. Recipe page => insert img!
+          - 6. Filter recipes by ingredient (on Recipes index) ** change to text_field later
+            7. Random taco generator
+
+- Extra
+(Taco cat img generator)
+(Restaurant locator)
