@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :find_recipe, only: [:show, :create, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
     # @recipes = Recipe.all
@@ -17,7 +17,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-    redirect_to @recipe
+    if @recipe.valid?
+      redirect_to @recipe
+    else
+      flash[:error] = @recipe.errors.full_messages
+      redirect_to new_recipe_path
+    end
   end
 
   def edit
@@ -26,7 +31,12 @@ class RecipesController < ApplicationController
 
   def update
     @recipe.update(recipe_params)
-    redirect_to @recipe
+    if @recipe.valid?
+      redirect_to @recipe
+    else
+      flash[:error] = @recipe.errors.full_messages
+      redirect_to edit_recipe_path
+    end
   end
 
   def destroy
